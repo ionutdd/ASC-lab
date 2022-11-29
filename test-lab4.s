@@ -16,6 +16,10 @@ rest: .space 4
 
 sir: .space 800
 
+fs1: .asciz "%ld"
+
+print: .asciz "%ld\n"
+
 .text
 
 
@@ -27,6 +31,8 @@ main:
 
 
 pushl $n
+
+push $fs1
 
 call scanf
 
@@ -51,6 +57,8 @@ for_citire:
     pusha
 
     pushl $a
+
+    push $fs1
 
     call scanf
 
@@ -77,6 +85,8 @@ exit_for_citire:
 
 
 xorl %ecx, %ecx
+
+movl %ecx, s
 
 lea sir, %esi
 
@@ -114,11 +124,13 @@ lea sir, %esi
 
 xorl %ecx, %ecx
 
+movl n,%ebx
+
 movl s, %eax
 
 movl $0, %edx
 
-divl n
+divl %ebx
 
 movl %eax, cat
 
@@ -126,27 +138,27 @@ movl %edx, rest
 
 
 
-mov $4, %eax
+pushl $cat
 
-mov $1, %ebx
+pushl $print
 
-movl cat, %ecx
+call printf
 
-mov $15, %edx
+popl %ebx
 
-int $0x80
+popl %ebx
 
 
 
-mov $4, %eax
+pushl $rest
 
-mov $1, %ebx
+pushl $print
 
-movl rest, %ecx
+call printf
 
-mov $15, %edx
+popl %ebx
 
-int $0x80
+popl %ebx
 
 
 
