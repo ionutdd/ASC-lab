@@ -324,3 +324,13 @@ for_liness:
 	movl $newLine, %ecx
 	movl $2, %edx
 	int $0x80
+
+	incl lineIndex
+	jmp for_liness
+
+
+exit:	
+
+movl $1, %eax
+xorl %ebx, %ebx
+int $0x80
