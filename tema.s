@@ -114,11 +114,9 @@ row_loop:
 
     ;# tinem minte rezultatul in mres[esi][esi]
 
-    movl $3, %eax
-
     movl 16(%ebp), %ebx     ;# get mres
 
-    movl %eax, (%ebx, %esi, 4)         ;# tinem minte rezultatul in mres[esi][esi]
+    movl %ecx, (%ebx, %esi, 4)         ;# tinem minte rezultatul in mres[esi][esi]
 
 
 
@@ -554,10 +552,6 @@ afi:
 
 
 
-
-
-
-
 pushl %edx
 
 pushl $afis
@@ -567,8 +561,6 @@ call printf
 popl %ebx
 
 popl %ebx
-
-
 
 
 
