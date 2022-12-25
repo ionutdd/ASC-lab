@@ -858,7 +858,9 @@ popl %ebx
 
 popl %ebx
 
-	
+
+
+jmp exit	
 
 	
 
@@ -893,96 +895,6 @@ call printf
 popl %ebx
 
 popl %ebx
-
-
-
-
-
-
-
-;# afisarea matricei mres pt verificare
-
-movl $0, lineIndex
-
-for_liness:
-
-	movl lineIndex, %ecx
-
-	cmp n, %ecx
-
-	je exit
-
-	movl $0, columnIndex
-
-
-
-	
-
-	for_columnss:
-
-		movl columnIndex, %ecx
-
-		cmp n, %ecx
-
-		je contt
-
-		movl lineIndex, %eax
-
-		movl $0, %edx
-
-		mull n
-
-		addl columnIndex, %eax
-
-		lea mres, %ecx
-
-		movl (%ecx, %eax, 4), %ebx
-
-		pushl %ebx
-
-	  pushl $afismat
-
-		call printf
-
-		popl %ebx
-
-		popl %ebx
-
-		pushl $0
-
-		call fflush
-
-		popl %ebx
-
-		incl columnIndex
-
-		jmp for_columnss
-
-
-
-		
-
-	contt:
-
-
-
-	
-
-	movl $4, %eax
-
-	movl $1, %ebx
-
-	movl $newLine, %ecx
-
-	movl $2, %edx
-
-	int $0x80
-
-
-
-	incl lineIndex
-
-	jmp for_liness
 
 
 
