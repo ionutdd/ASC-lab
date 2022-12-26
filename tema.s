@@ -760,7 +760,7 @@ for_drum:              ;# mres-->%ecx     m2-->%ebx    m1-->%eax
 
 			xorl %edx, %edx
 
-			
+			movl %edx, garbage3
 
 			for_imul:
 
@@ -815,6 +815,8 @@ for_drum:              ;# mres-->%ecx     m2-->%ebx    m1-->%eax
 	
 
 	movl garbage1, %edx
+
+	movl garbage2, %eax
 
 	incl %edx
 
