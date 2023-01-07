@@ -528,15 +528,7 @@ for_lines:
 
 	
 
-	movl $4, %eax
-
-	movl $1, %ebx
-
-	movl $newLine, %ecx
-
-	movl $2, %edx
-
-	int $0x80
+	
 
 	
 
@@ -898,6 +890,11 @@ popl %ebx
 
 popl %ebx
 
+;#fflush
+
+pushl $0
+call fflush
+popl %ebx
 
 
 
